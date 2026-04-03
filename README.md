@@ -82,5 +82,32 @@ orbital mechanics of a solar system that will exist on-chain indefinitely.
 
 ---
 
+## Setup & Run
+
+### Prerequisites
+- Node.js 18+
+- MetaMask with Etherlink Shadownet (Chain ID: 127823)
+
+### Quick Start — Mock Mode (no contract needed)
+```bash
+npm install
+node server.js
+```
+Open `public/index.html` in browser.
+Mock bids fire every 4s. Press B to bid, O to outbid, F to freeze.
+
+### Live Mode — Etherlink Shadownet
+```bash
+MOCK=0 AUCTION_ADDRESS=0xe18455337789566B06F14a6D3A96e78eC9E5f05C node server.js
+```
+
+### Deploy Contract
+```bash
+npm install
+npx hardhat compile
+npx hardhat run scripts/deploy.js --network etherlinkShadownet
+```
+---
+
 Built for the Tezos EVM Hackathon — April 2026  
 Etherlink: fast, fair, nearly free — the right chain for real-time auction-responsive art.
