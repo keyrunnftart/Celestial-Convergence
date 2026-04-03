@@ -1,94 +1,84 @@
-# Sentient Singularity — Bridge
+# Celestial Convergence
 
-WebSocket bridge between the Base Sepolia auction contract and the animation.
+**Each bid pulls a new planet into orbit. When the auction closes, the solar system is permanent.**
 
----
+Generation 3 of the living collection. Built on Etherlink (Tezos EVM).
 
-## Quick Start — Test with Mock Bids (no contract needed)
+An autonomous AI agent watches a live auction on Etherlink. Every bid spawns a new planet — 
+its mass set by the ETH bid value, its colour seeded by the bidder's wallet address, 
+its orbital inclination rotated by the ancestral geometry of Cosmic Emergence (Generation 1). 
+When the auction ends, all orbits freeze. The solar system is a permanent, on-chain record 
+of every person who participated.
 
-```powershell
-cd bridge
-npm install
-$env:MOCK="1"; node server.js
-```
-
-Open the animation at `http://localhost:3000` — a mock bid fires every 12 seconds.
-Watch the HUD: bid count climbs, new mini black holes appear.
-Press **B** in the animation at any time to fire an instant test bid manually.
+No two auctions produce the same solar system. The artwork cannot return to its initial state.
 
 ---
 
-## Live Mode — Real Auction on Base Sepolia
+## Generational Lineage
 
-### Step 1 — Deploy the auction contract via rare-cli
+| | Project | Chain | Role |
+|---|---|---|---|
+| Gen 1 | Cosmic Emergence | Sepolia | Peak bidder wallet seeds orbital plane angle |
+| Gen 2 | Sentient Singularity | Base Sepolia | Frozen palette hue seeds central star colour |
+| Gen 3 | Celestial Convergence | Etherlink | This work |
 
-```powershell
-# Install rare-cli if not already installed
-npm install -g @rareprotocol/rare-cli
-
-# Deploy ERC-721 + auction on Base Sepolia (gas = 0)
-rare-cli deploy --network base-sepolia --name "Sentient Singularity" --symbol "SS"
-```
-
-Copy the contract address from the output.
-
-### Step 2 — Set environment variables
-
-```powershell
-$env:MOCK="0"
-$env:INFURA_KEY="your_infura_key_here"
-$env:AUCTION_ADDRESS="0xYourContractAddress"
-node server.js
-```
-
-Or create a `.env` file:
-```
-MOCK=0
-INFURA_KEY=your_infura_key_here
-AUCTION_ADDRESS=0xYourContractAddress
-```
-
-### Step 3 — Start the animation
-
-```powershell
-cd ..
-npx serve .
-# Open http://localhost:3000
-```
+Each generation inherits traits from all predecessors. Collecting early is a genetic act, 
+not just a chronological one.
 
 ---
 
 ## How It Works
 
-```
-Base Sepolia Auction Contract
-  ↓ eth_getLogs — NewBid events polled every 8s via Infura
-Node.js Bridge (ws://localhost:3131)
-  ↓ BID event → browser
-Animation (index.html)
-  ↓ New mini BH spawned (5% smaller, orbit 80 units wider)
-  ↓ Memory spike (proportional to ETH amount, 8s decay)
-  ↓ Tunnel hue shift (unique per bidder wallet hash)
-  ↓ Cosmic era advances every 3 bids
-  ↓ Color cycle speeds up to 1 min when 8 BHs reached
+1. Auction opens on Etherlink. Animation begins — central star glowing, two founding 
+   planets already in orbit (representing CE and SS as ancestors).
+2. A bid arrives. The autonomous bridge agent detects it via Etherlink RPC polling.
+3. A new planet spawns — size from bid amount, colour from wallet hash, 
+   orbital tilt from CE's ancestral geometry.
+4. The bidder who is outbid has their orbit destabilise — eccentricity spikes, 
+   the planet visibly struggles before restabilising.
+5. At auction close — all orbits freeze permanently. The agent mints the final 
+   visual state as a 1/1 NFT on Etherlink to the winning bidder's wallet.
+6. The frozen solar system is the artwork. The auction was the artist.
+
+---
+
+## Technical Stack
+
+- **Animation**: Three.js r128 WebGL — orbital mechanics with Keplerian ellipses
+- **Agent harness**: Claude Code (Anthropic)
+- **Bridge**: Node.js WebSocket server — polls Etherlink RPC for bid events
+- **Chain**: Etherlink Shadownet Testnet (Chain ID: 127823)
+- **Contract**: ERC-721 — `CelestialConvergence.sol`
+- **Agent identity**: ERC-8004 (shared with CE and SS — one agent, three artworks)
+- **Human intervention**: None between bid detection and mint
+
+---
+
+## Ancestral Traits (on-chain metadata)
+```json
+{
+  "generation": 3,
+  "ancestor_1": "Cosmic Emergence — Sepolia",
+  "ancestor_2": "Sentient Singularity — Base Sepolia",
+  "orbital_plane_seed": "CE peak bidder wallet hash",
+  "star_colour_seed": "SS frozen palette at bid 50 (hue: 220°)",
+  "human_intervention": false,
+  "agent_identity": "0x8cfda7cf..."
+}
 ```
 
 ---
 
-## Environment Variables
+## Collection Thesis
 
-| Variable          | Default      | Description                        |
-|-------------------|--------------|------------------------------------|
-| `MOCK`            | `1`          | `1` = mock bids, `0` = live chain  |
-| `INFURA_KEY`      | —            | Your Infura project key            |
-| `AUCTION_ADDRESS` | —            | Deployed auction contract address  |
-| `RPC_URL`         | Infura Base Sepolia | Full RPC URL override       |
+*Generative art that remembers who collected it.*
+
+The auction is not a trigger for the artwork. The auction is the compositional force. 
+Every collector who bids becomes a permanent element of the piece — their wallet address 
+encoded in colour, their bid size encoded in mass, their participation encoded in the 
+orbital mechanics of a solar system that will exist on-chain indefinitely.
 
 ---
 
-## Keyboard Shortcuts (in animation)
-
-| Key | Action                        |
-|-----|-------------------------------|
-| `B` | Fire instant test bid         |
-| `H` | Toggle HUD overlay on/off     |
+Built for the Tezos EVM Hackathon — April 2026  
+Etherlink: fast, fair, nearly free — the right chain for real-time auction-responsive art.
