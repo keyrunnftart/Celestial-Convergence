@@ -51,6 +51,8 @@ not just a chronological one.
 - **Contract**: ERC-721 — `CelestialConvergence.sol`
 - **Agent identity**: ERC-8004 (shared with CE and SS — one agent, three artworks)
 - **Human intervention**: None between bid detection and mint
+- **Contract**: 0xe18455337789566B06F14a6D3A96e78eC9E5f05C
+- **Explorer**: https://shadownet.explorer.etherlink.com/address/0xe18455337789566B06F14a6D3A96e78eC9E5f05C
 
 ---
 
