@@ -14,8 +14,8 @@ contract CelestialConvergence is ERC721URIStorage, Ownable {
 
     // Generational lineage — links back to CE and SS
     string public constant GENERATION       = "3";
-    string public constant ANCESTOR_1       = "Cosmic Emergence — Sepolia";
-    string public constant ANCESTOR_2       = "Sentient Singularity — Base Sepolia";
+    string public constant ANCESTOR_1       = "Cosmic Emergence - Sepolia";
+    string public constant ANCESTOR_2       = "Sentient Singularity - Base Sepolia";
     string public constant AGENT_IDENTITY   = "0x8cfda7cf5391a7085d2920c0b0fdb0d6c95d60bf3b588d5a854149aaed73d344";
     string public constant AGENT_HARNESS    = "claude-code";
     string public constant CHAIN            = "Etherlink (Tezos EVM)";
@@ -41,7 +41,7 @@ contract CelestialConvergence is ERC721URIStorage, Ownable {
         uint256 planetCount
     );
 
-    constructor() ERC721("Celestial Convergence", "CCVG") Ownable(msg.sender) {}
+    constructor() ERC721("Celestial Convergence", "CCVG") {}
 
     /// @notice Autonomous agent calls this to mint the final frozen solar system
     function mint(

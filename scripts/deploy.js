@@ -1,4 +1,4 @@
-const hre = require("hardhat");
+import hre from "hardhat";
 
 async function main() {
   console.log("Deploying Celestial Convergence to Etherlink Shadownet...");
@@ -12,6 +12,7 @@ async function main() {
   const cc = await CC.deploy();
   await cc.waitForDeployment();
   const addr = await cc.getAddress();
+
   console.log("✅ CelestialConvergence deployed to:", addr);
   console.log("Update CONTRACT_ADDRESS in .env with:", addr);
 }
