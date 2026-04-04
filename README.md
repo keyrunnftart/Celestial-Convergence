@@ -1,3 +1,5 @@
+![Celestial Convergence — Solar system locked permanently on Etherlink](./screenshots/preview.png)
+
 # Celestial Convergence
 
 **Each bid pulls a new planet into orbit. When the auction closes, the solar system is permanent.**
